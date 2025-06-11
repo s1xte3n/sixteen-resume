@@ -17,6 +17,9 @@
       "ap-east-1" : {
         "description" : "Asia Pacific (Hong Kong)"
       },
+      "ap-east-2" : {
+        "description" : "Asia Pacific (Taipei)"
+      },
       "ap-northeast-1" : {
         "description" : "Asia Pacific (Tokyo)"
       },
@@ -74,7 +77,7 @@
       "eu-south-2" : {
         "description" : "Europe (Spain)"
       },
-      "eu-north-1" : {
+      "eu-west-1" : {
         "description" : "Europe (Ireland)"
       },
       "eu-west-2" : {
