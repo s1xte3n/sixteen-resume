@@ -1,0 +1,4 @@
+- All requests must pass validation middleware
+- All responses must use response formatter
+- All errors must pass centralized error handler
+- All logs must include requestId
