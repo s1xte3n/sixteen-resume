@@ -1,346 +1,494 @@
-# 🧠 Vibe Coder Template
+# Cloud Resume Challenge
 
-> A workflow-enforcing engineering system for building, reviewing, shipping, and operating production software with AI-assisted development.
-
-This is not a starter repo. It is an **opinionated engineering system** combining Git workflows, CI/CD, AWS standards, and AI-driven development rules.
+A production-oriented implementation of the **Cloud Resume Challenge** built with a modern full-stack architecture. The project showcases cloud engineering, backend development, frontend development, DevOps, Infrastructure as Code (IaC), and CI/CD using a fully serverless AWS architecture.
 
 ---
 
-## ✨ Philosophy
+# Project Overview
 
-* Automation over discipline
-* Consistency over cleverness
-* Safety over speed without control
-* Small commits, verifiable changes
-* Production thinking from day one
-* Treat solo development like a team system
+The Cloud Resume Challenge demonstrates the skills required to design, build, deploy, and operate a modern cloud-native application.
 
----
+This project consists of:
 
-## ⚙️ Tech Stack
-
-* Runtime: Node.js
-* Frontend: React (Vite + TypeScript)
-* Backend: Node.js (API / Lambda-ready)
-* Infrastructure: AWS CDK v2
-* CI/CD: GitHub Actions
-* Tooling: ESLint, Prettier, Husky
-* Architecture: Monorepo
+- Responsive React frontend
+- Node.js + Express REST API
+- Visitor counter API
+- AWS serverless infrastructure
+- Infrastructure as Code
+- CI/CD automation
+- Cloud monitoring
+- Secure deployment practices
 
 ---
 
-## 🚀 One-Click Setup
+# Goals
 
-After creating a repo from this template:
+- Build a professional cloud portfolio
+- Learn AWS production architecture
+- Demonstrate Infrastructure as Code
+- Implement CI/CD pipelines
+- Deploy a globally available application
+- Follow software engineering best practices
 
-```bash
-chmod +x scripts/bootstrap-repo.sh
-./scripts/bootstrap-repo.sh
+---
+
+# Architecture
+
 ```
-
-This configures:
-
-* develop branch initialization
-* branch protection rules
-* CI enforcement
-* security settings
-* repository baseline setup
-
-All future changes must go through PRs.
-
----
-
-## 🔐 System Enforcement Model
-
-This repository enforces correctness through layers:
-
-### 1. Code Rules (.claude/rules)
-
-* Backend structure (MVC, validation, error handling)
-* Frontend structure (feature-based React)
-* Infrastructure rules (CDK, IAM safety)
-* CI/CD rules (GitHub Actions enforcement)
-* Security rules (no secrets, least privilege)
-* Testing rules (required coverage for logic)
-
----
-
-### 2. AI System Layer (.claude)
-
-* Agents (security, CI, debugging, AWS architecture)
-* Commands (/review, /deploy, /troubleshoot, /incident)
-* Hooks (secrets detection, CDK validation, safety checks)
-* Output styles (architecture, concise, code-only)
-
-AI is constrained by repository rules.
-
----
-
-### 3. Runtime Governance
-
-* Feature flags system controls runtime behavior
-* Centralized config validation
-* Structured error handling system
-* Request context tracking (requestId propagation)
-* Structured JSON logging enforced
-
----
-
-### 4. CI/CD Enforcement
-
-GitHub Actions pipelines enforce:
-
-* lint → test → build → security scan
-* PR-only merges
-* develop = staging deployments
-* main = production deployments (manual approval)
-* OIDC-based AWS authentication
-
----
-
-### 5. Safety Hooks (Local Protection)
-
-Prevents:
-
-* secret leakage
-* unsafe git operations
-* invalid CDK deployments
-* production mistakes
-
----
-
-## 🔁 Required Workflow
-
-### Step 1 — Create feature branch
-
-```bash
-git checkout develop
-git pull
-git checkout -b feature/name
+                User
+                 │
+                 ▼
+          CloudFront CDN
+                 │
+                 ▼
+          S3 Static Website
+                 │
+                 ▼
+         React Frontend (Vite)
+                 │
+         HTTPS REST API
+                 │
+                 ▼
+          API Gateway
+                 │
+                 ▼
+             AWS Lambda
+                 │
+                 ▼
+            DynamoDB Table
 ```
 
 ---
 
-### Step 2 — Implement changes
+# Current Development Architecture
 
-* Follow `.claude/rules`
-* Use `.claude/agents` guidance
-* Validate locally before push
+```
+Frontend (React)
+        │
+        ▼
+Express REST API
+        │
+        ▼
+ Visitor Service
+        │
+        ▼
+ Visitor Store
+(In-memory)
 
----
+Future:
 
-### Step 3 — Local validation
-
-```bash
-npm run lint
-npm run test
-npm run build
+Visitor Store
+      │
+      ▼
+ DynamoDB
 ```
 
 ---
 
-### Step 4 — AI review (mandatory)
+# Features
 
-```bash
-/review
+## Frontend
+
+- React 19
+- Vite
+- Tailwind CSS
+- Dark / Light mode
+- Responsive layout
+- Professional portfolio
+- Dynamic visitor counter
+- AWS focused branding
+
+---
+
+## Backend
+
+- Node.js
+- Express
+- TypeScript
+- REST API
+- Layered architecture
+- Service layer
+- Store layer
+- Visitor Counter API
+- CORS support
+
+---
+
+## Cloud
+
+- AWS Lambda
+- API Gateway
+- DynamoDB
+- S3
+- CloudFront
+- Route53
+- ACM SSL
+- CloudWatch
+
+---
+
+## DevOps
+
+- GitHub Actions
+- Automated deployments
+- Infrastructure as Code
+- Environment configuration
+- Monitoring
+- Logging
+
+---
+
+# Technology Stack
+
+## Frontend
+
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- Lucide Icons
+
+---
+
+## Backend
+
+- Node.js
+- Express
+- TypeScript
+
+---
+
+## Cloud
+
+- AWS Lambda
+- API Gateway
+- DynamoDB
+- CloudFront
+- S3
+- IAM
+
+---
+
+## Infrastructure
+
+- AWS SAM
+- AWS CDK
+- Terraform (planned)
+
+---
+
+## DevOps
+
+- GitHub Actions
+- Git
+- GitHub
+
+---
+
+# Folder Structure
+
 ```
+sixteen-resume/
 
-Checks:
-
-* architecture
-* security
-* AWS correctness
-* CI readiness
-* observability gaps
-
----
-
-### Step 5 — Commit & push
-
-```bash
-git add .
-git commit -m "feat: description"
-git push
-```
-
----
-
-### Step 6 — Pull request to develop
-
-* CI runs automatically
-* Must pass all checks
-* No direct merges
-
----
-
-### Step 7 — Production release
-
-* PR: develop → main
-* Manual approval required
-* Deploy via GitHub Actions
-
----
-
-## 🤖 AI Command System
-
-### /review
-
-Full code and architecture review
-
-### /deploy
-
-Validates deployment safety and triggers pipeline rules
-
-### /troubleshoot
-
-Diagnoses runtime issues using logs and infrastructure signals
-
-### /incident
-
-Used for production failures, rollback guidance, and mitigation
-
----
-
-## 📁 Repository Structure
-
-```
-vibe-coder-template/
-├── .github/                # CI/CD workflows
-├── .claude/                # AI system layer
-│   ├── agents/
-│   ├── commands/
-│   ├── hooks/
-│   ├── rules/
-│   ├── skills/
-│   └── output-styles/
+│
 ├── apps/
+│   │
 │   ├── frontend/
+│   │   ├── public/
+│   │   ├── src/
+│   │   ├── package.json
+│   │   └── vite.config.ts
+│   │
 │   └── backend/
-├── packages/
-│   ├── feature-flags/
-│   ├── config/
-├── infra/                  # AWS CDK
+│       ├── src/
+│       │   ├── controllers/
+│       │   ├── routes/
+│       │   ├── services/
+│       │   ├── store/
+│       │   ├── models/
+│       │   ├── middleware/
+│       │   ├── utils/
+│       │   └── server.ts
+│       │
+│       └── package.json
+│
 ├── docs/
-│   └── ai-context/
-│       ├── architecture.md
-│       ├── aws-standards.md
-│       ├── backend-patterns.md
-│       ├── frontend-patterns.md
-│       ├── cicd-workflow.md
-│       ├── deployment-flow.md
-│       ├── observability.md
-│       ├── security.md
-│       ├── testing-strategy.md
-│       └── environments.md
-├── scripts/
-├── security/
-├── observability/
+│
+├── architecture.md
+├── context.md
+├── decisions.md
+├── roadmap.md
+├── runbook.md
+├── tasks.md
 └── README.md
 ```
 
 ---
 
-## 📊 CI/CD Model
+# API Endpoints
 
-### Branch Strategy
+## Get Visitor Count
 
-* develop → staging
-* main → production
-* feature/* → PR flow
-* hotfix/* → emergency fixes
+```
+GET /visitor
+```
 
----
+Response
 
-### Pipeline Stages
-
-1. lint
-2. test
-3. build
-4. security scan
-5. deploy (staging)
-6. manual deploy (production)
+```json
+{
+  "count": 25
+}
+```
 
 ---
 
-## 🔐 Security Model
+## Increment Visitor Count
 
-* No secrets in code
-* IAM least privilege only
-* No wildcard permissions
-* Dependency scanning enabled
-* Secret scanning enabled
-* Production protected by approval gate
+```
+POST /visitor
+```
 
----
+Response
 
-## 📈 Observability Model
-
-* Structured JSON logs
-* RequestId tracking
-* CloudWatch metrics
-* Error tracing enabled
-* API latency monitoring
+```json
+{
+  "count": 26
+}
+```
 
 ---
 
-## ⚙️ Runtime Model
+# Local Development
 
-* Feature flags control behavior
-* Centralized config validation
-* Strict environment separation
-* Safe rollback support
+## Clone Repository
 
----
+```bash
+git clone https://github.com/<username>/sixteen-resume.git
 
-## 🧠 Documentation System
-
-### architecture.md
-
-System structure and design
-
-### cicd-workflow.md
-
-Pipeline and deployment flow
-
-### deployment-flow.md
-
-Release and rollback strategy
-
-### observability.md
-
-Logging, metrics, tracing
-
-### security.md
-
-Security policies and IAM rules
-
-### environments.md
-
-Environment definitions (dev/staging/prod)
+cd sixteen-resume
+```
 
 ---
 
-## 💡 Engineering Principles
+## Install Frontend
 
-* Everything must be reproducible
-* Everything must be testable
-* Everything must be observable
-* Everything must be deployable via CI
-* Manual actions are exceptions, not defaults
+```bash
+cd apps/frontend
 
----
-
-## 🏁 Final Rule
-
-If a change is not:
-
-* tested
-* reviewed
-* observable
-* deployable
-
-It is not done.
+npm install
+```
 
 ---
 
-This system is designed to enforce production-level engineering discipline through automation, structure, and AI constraints.
+## Install Backend
+
+```bash
+cd ../backend
+
+npm install
+```
+
+---
+
+# Environment Variables
+
+## Frontend
+
+Create:
+
+```
+apps/frontend/.env
+```
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+---
+
+## Backend
+
+Create:
+
+```
+apps/backend/.env
+```
+
+```env
+PORT=5000
+```
+
+---
+
+# Start Backend
+
+```bash
+cd apps/backend
+
+npm run dev
+```
+
+Server
+
+```
+http://localhost:5000
+```
+
+---
+
+# Start Frontend
+
+```bash
+cd apps/frontend
+
+npm run dev
+```
+
+Application
+
+```
+http://localhost:5173
+```
+
+---
+
+# Testing
+
+## Test Visitor Endpoint
+
+```bash
+curl http://localhost:5000/visitor
+```
+
+Increment
+
+```bash
+curl -X POST http://localhost:5000/visitor
+```
+
+---
+
+# Deployment Roadmap
+
+## Phase 1
+
+- React frontend
+- Express backend
+- Visitor counter
+- Local development
+
+Status
+
+- ✅ Complete
+
+---
+
+## Phase 2
+
+- AWS Lambda
+- API Gateway
+- DynamoDB
+
+Status
+
+- 🚧 In Progress
+
+---
+
+## Phase 3
+
+- S3
+- CloudFront
+- HTTPS
+- Route53
+
+Status
+
+- ⏳ Planned
+
+---
+
+## Phase 4
+
+- GitHub Actions
+- Automated deployment
+- Infrastructure as Code
+
+Status
+
+- ⏳ Planned
+
+---
+
+## Phase 5
+
+- Monitoring
+- Logging
+- CloudWatch
+- Alarms
+
+Status
+
+- ⏳ Planned
+
+---
+
+# Future Improvements
+
+- Authentication
+- Contact form
+- Blog
+- Project CMS
+- Analytics
+- CloudWatch dashboards
+- AWS X-Ray
+- Lambda Powertools
+- OpenAPI documentation
+- Unit tests
+- Integration tests
+- End-to-end tests
+
+---
+
+# Learning Objectives
+
+This project demonstrates knowledge of:
+
+- Cloud Computing
+- AWS
+- Serverless Architecture
+- REST APIs
+- React
+- TypeScript
+- Express
+- Infrastructure as Code
+- CI/CD
+- Monitoring
+- Secure Development
+- Software Architecture
+- DevOps
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+---
+
+# Author
+
+**Ntlantla Thokozani Nhlapo**
+
+Software Developer | Cloud Engineer | DevOps Engineer
+
+- GitHub
+- LinkedIn
+- Portfolio
+
+---
+
+# Acknowledgements
+
+This project is based on the **Cloud Resume Challenge**, an industry-recognized hands-on project designed to develop practical cloud engineering and software development skills through the implementation of a real-world serverless application.
